@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Apr  4 12:16:54 2021
+from flask import Flask
 
-@author: win10
-"""
-### Create a BMI Calculation Application
+app = Flask(__name__)
 
-from pywebio.input import *
-from pywebio.output import *
-
+@app.route('/')
 def bmicalculator():
     height=input("Please enter the height in cm",type=FLOAT)
     weight=input("Please enter the weight in Kg",type=FLOAT)
@@ -21,9 +15,8 @@ def bmicalculator():
     
     for tuple1,tuple2 in bmi_output:
         if bmi<=tuple1:
-            put_text('Your BMI is :%.1f and the person is :%s'%(bmi,tuple2))
+            print('Your BMI is :%.1f and the person is :%s'%(bmi,tuple2))
             break
-        
-    
-if __name__=='__main__':
-    bmicalculator()
+
+if __name__ == '__main__':
+    app.run()
